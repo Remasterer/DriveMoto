@@ -1,0 +1,121 @@
+@import "src/assets/sass/main";
+.product{
+  position: relative;
+  max-width: 270px;
+  &__inner{
+    display: flex;
+    flex-direction: column;
+    padding: 52px  20px 31px;
+    @extend %border-gray;
+    text-align: center;
+    width: 270px;
+  }
+  &__sale{
+
+    @extend %action-block;
+  }
+  &__like{
+    background: url("src/assets/img/icons/like.svg") center center no-repeat;
+    width: 24px;
+    height: 22px;
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    justify-self: flex-end;
+    align-self: flex-end;
+    &.active{
+      background: url("src/assets/img/icons/blueHeart.svg") center center no-repeat;
+
+    }
+  }
+  &__name{
+    margin-top: 55px;
+    font-size: 20px;
+    max-width: 230px;
+  }
+  &__buy-price{
+    position: relative;
+    margin-top: 26px;
+    line-height: 24px;
+    font-size: 30px;
+    margin-bottom: 14px;
+    @extend %barlow-bold;
+    &::after{
+      @include pseudo;
+      top: 0;
+      right: -20px;
+    }
+  }
+  &__footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    min-height: 58px;
+    padding-bottom: 25px ;
+  }
+  &__buy-button{
+    background: $bg-blue;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    border-radius: 10px 0px 0px 0px;
+    padding:9px 15px;
+  }
+  &__image-wrapper{
+    height: 150px;
+  }
+  &__image{
+    max-width: 200px;
+  }
+  &__inform{
+    &-text{
+      margin-top: 10px;
+      @extend %sf-bold;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 13px;
+    }
+    &-button{
+      position: relative;
+      color: $bg-blue;
+      &::after{
+        @include pseudo;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background:$bg-blue;
+      }
+    }
+  }
+
+  &__hover-box{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    left: 4.5%;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 18px 21px ;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: all .5s ease-in-out;
+  }
+  .product__inner:hover{
+    @extend %hoverShadows;
+    .product__hover-box{
+      top: 30%;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+}
+
+
+
+

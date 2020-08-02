@@ -1,0 +1,59 @@
+@import "src/assets/sass/main";
+.catalog{
+  &__header{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__heading{
+    font-size: 30px;
+    @extend %sf-bold;
+  }
+  &__sort{
+    display: flex;
+    align-items: center;
+    &-select{
+      padding: 8px 20px;
+      border: 1px solid #D7D9DF ;
+      outline: none;
+      margin-right: 34px;
+    }
+    &-button{
+      display: flex;
+      //padding: 0 !important;
+    }
+  }
+
+
+
+
+  &__content{
+    display: grid;
+    grid-template-columns: minmax(20%,330px) 1fr;
+    margin-top: 47px;
+  }
+  &__filter{
+    .nav-tabs{
+      color: red;
+    }
+  }
+
+  &__main{
+    margin-top: 41px;
+  }
+}
+
+
+
+
+.breadcrumbs-filter{
+  margin-top: 26px;
+  .breadcrumbs-filter__item{
+    display: inline-block;
+    margin-left: 8px;
+    border-radius: 3px;
+    background: $bg-gray;
+    padding: 4px 24px;
+  }
+}

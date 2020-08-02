@@ -1,0 +1,66 @@
+@import "src/assets/sass/main";
+.banner{
+  max-width: 870px;
+  position: relative;
+  &__item {
+    height: 400px;
+    position: relative;
+    img {
+      height: 100%;
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+  &__prev,
+  &__next,
+  &__current {
+    appearance: none;
+    border: 0;
+    background: none;
+    bottom: calc(50% - 30px);
+    font-size: 15px;
+    line-height: 1;
+    padding: 15px;
+    position: absolute;
+    z-index: 2;
+  }
+  &__prev {
+    left: 15px;
+    background: url('src/assets/img/icons/arr-left.svg') center center no-repeat;
+
+  }
+  &__next {
+    right: 15px;
+    background: url('src/assets/img/icons/arr-right.svg') center center no-repeat;
+  }
+  &__current {
+    left: 0;
+    margin: 0 auto;
+    right: 0;
+    text-align: center;
+    z-index: 1;
+  }
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    &-item{
+      width: 11px;
+      height: 11px;
+      background: none;
+      border: 1px solid #fff;
+      border-radius: 50%;
+    }
+    &-item +  &-item{
+      margin-left: 9px;
+    }
+    &-item.active {
+      background-color: $txt-white;
+    }
+  }
+}

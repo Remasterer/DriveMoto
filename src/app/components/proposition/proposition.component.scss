@@ -1,0 +1,27 @@
+@import "src/assets/sass/main";
+.proposition{
+  margin-top: 86px;
+  display: flex;
+  align-items: center;
+  background: $bg-blue;
+  padding: 28px 0;
+  padding-left: 71px;
+  &__title{
+    margin-left: 46px;
+    font-size: 36px;
+    line-height: 36px;
+    color: $txt-white;
+    @extend %sf-bold;
+  }
+  &__image{
+
+  }
+  &__button{
+    margin-left: 11px;
+    background: $txt-white;
+    @extend %sf-semibold;
+    font-size: 24px;
+    line-height: 50px;
+    padding: 4px 31px;
+  }
+}

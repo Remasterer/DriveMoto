@@ -1,0 +1,29 @@
+@import "src/assets/sass/main";
+
+.search{
+  margin-top: 77px;
+  ::ng-deep .mat-tab-label{
+      padding: 11px 26px;
+      border-radius: 5px;
+    color: inherit;
+      &-active{
+        @extend %sf-bold;
+        background: $bg-gray;
+      }
+    }
+  ::ng-deep .mat-ink-bar{
+    background:$bg-blue ;
+  }
+  &__form{
+    margin-top: 25px;
+    &-input{
+      border:none;
+      background: $bg-gray;
+      width: 80%;
+      padding: 16px;
+    }
+    &-button{
+      padding: 15px 47px 16px 48px;
+    }
+  }
+}

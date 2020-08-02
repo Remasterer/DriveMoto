@@ -1,0 +1,49 @@
+@import "src/assets/sass/main";
+
+.categorie-item{
+  display: flex;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 20px 20px 14px 20px;
+  height:100%;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  @extend %border-gray;
+  &__left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__name{
+    font-size: 23px;
+    line-height: 28px;
+    @extend %barlow-bold;
+  }
+  &__button{
+    color: $light-gray;
+    font-size: 14px;
+    background: transparent;
+    position: relative;
+    &::after{
+      @include pseudo;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background: url("/assets/icons/more-arrow.png") center center no-repeat;
+    }
+  }
+  &:hover{
+    @extend  %hoverShadows;
+
+    &__name{
+      color: $bg-blue;
+    }
+  }
+  &__img{
+    object-fit: contain;
+  }
+}

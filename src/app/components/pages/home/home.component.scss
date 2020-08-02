@@ -1,0 +1,8 @@
+@import "src/assets/sass/main";
+.intro{
+  &__inner{
+    display: grid;
+    grid-template-columns: 1fr minmax(295px,20%);
+    grid-gap: 36px;
+  }
+}

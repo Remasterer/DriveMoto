@@ -1,0 +1,36 @@
+
+<div class="product slide"  href="#">
+    <div *ngIf="productInfo.inSale" class="product__sale">SALE</div>
+    <button class="product__like" (click)="toggleFavorite($event)">
+    </button>
+    <a routerLink="/product" class="product__inner" href="#">
+      <div class="product__image-wrapper">
+        <img src="{{productInfo.photo}}" alt=""  class="product__image">
+      </div>
+      <div class="product__name">{{productInfo.name}}</div>
+      <div class="product__buy" *ngIf="productInfo.avaliable;else productInfoBlock" >
+        <p class="product__buy-price">
+          {{productInfo.price}} &#8381;
+        </p>
+      </div>
+      <ng-template #productInfoBlock >
+        <div class="product__inform">
+          <p class="product__inform-text">
+            нет в наличии
+          </p>
+          <a href="#1" class="product__inform product__inform-button ">
+            Сообщить о поступлении
+          </a>
+        </div>
+      </ng-template>
+      <a class="product__hover-box">
+        <p>
+          посмотреть товар
+        </p>
+      </a>
+    </a>
+    <button class="product__buy-button" *ngIf="productInfo.avaliable">
+      <img src="assets/img/icons/toBin.svg" alt="">
+    </button>
+  </div>
+

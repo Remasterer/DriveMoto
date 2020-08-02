@@ -1,0 +1,85 @@
+@import "src/assets/sass/main";
+.product{
+  margin-top: 36px;
+  &__content{
+    margin-top: 21px;
+    display: flex;
+  }
+  &__left{
+    position: relative;
+    text-align: center;
+    max-width: 547px;
+    min-width: 45%;
+
+  }
+  &__action{
+    @extend %action-block;
+  }
+  &__old-price{
+    margin: 0 auto;
+    font-size: 30px;
+    line-height: 36px;
+    @extend %barlow-regular;
+    &__text{
+      position: relative;
+      &::before{
+        @include pseudo;
+        top: 20px;
+        left: 0;
+        height: 2px;
+        background: $txt-black;
+        width: 100%;
+        transform: rotate(-10deg);
+      }
+    }
+  }
+  &__new-price{
+    margin-top: 6px;
+    @extend %barlow-bold;
+    font-size: 40px;
+  }
+  &__proposition-text{
+    margin-top: 17px;
+    font-size: 15px;
+    color: $bg-blue;
+  }
+  &__info{
+    margin-left: 100px;
+  }
+  &__title{
+    font-size: 30px;
+    line-height: 36px;
+    @extend %barlow-bold;
+    max-width: 490px;
+  }
+  &__id{
+    color: $light-gray;
+    margin-top: 10px;
+  }
+  &__show-rate{
+    object-fit: contain;
+  }
+  &__actions{
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+  }
+  &__actions__item + &__actions__item{
+    margin-left: 25px;
+  }
+  &__buy-button{
+    margin-top: 61px;
+    padding: 16px 53px;
+  }
+}
+.characteristics{
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #2F3035;
+  }
+  &__item + &__item{
+    margin-top: 15px;
+  }
+
+}

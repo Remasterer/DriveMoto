@@ -1,0 +1,57 @@
+@import "src/assets/sass/main";
+.products-slider{
+  margin-top: 80px;
+  position: relative;
+  &__title{
+    font-size: 30px;
+    @extend %barlow-bold;
+  }
+  &__content{
+    margin-top: 19px;
+    ::ng-deep  .mat-tab-label{
+      color: inherit;
+      font-size: 15px;
+      //opacity: 1;
+      min-width: unset;
+      &-active{
+        opacity: 1;
+      }
+    }
+    ::ng-deep .mat-ink-bar{
+      background: $bg-blue;
+    }
+    ::ng-deep .mat-tab-body-wrapper{
+      margin-top: 26px;
+    }
+
+    ::ng-deep .mat-tab-body-content{
+      flex-wrap: nowrap;
+    }
+  }
+  &__button{
+    @include pseudo;
+    background: url("src/assets/img/icons/arr-left.svg") center center no-repeat;
+    width: 20px;
+    height: 20px;
+    &--left{
+
+    }
+    &--right{
+
+    }
+  }
+  &__paginate-button{
+    text-align: center;
+    padding: 15px 45px;
+    background: $bg-gray;
+    font-size: 15px;
+  }
+  &__action{
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+
+

@@ -1,0 +1,46 @@
+<aside class="filter">
+
+
+  <tabset>
+    <tab heading="Basic title" id="tab1" class="catalog__filter">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             Наличие
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section class="example-section" >
+            <mat-checkbox class="example-margin"   [(ngModel)]="avaliable">В наличие</mat-checkbox>
+            <mat-checkbox class="example-margin"   [(ngModel)]="forOrder">Под заказ</mat-checkbox>
+          </section>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Новинки
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section class="example-section" >
+            <mat-checkbox class="example-margin"   [(ngModel)]="avaliable">Все</mat-checkbox>
+            <mat-checkbox class="example-margin"   [(ngModel)]="avaliable">Новинки</mat-checkbox>
+            <mat-checkbox class="example-margin"   [(ngModel)]="forOrder">Акции</mat-checkbox>
+          </section>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1000"
+        min="1"
+        max="100000"></mat-slider>
+    </tab>
+    <tab heading="Basic Title 1" class="catalog__filter">
+
+    </tab>
+  </tabset>
+</aside>

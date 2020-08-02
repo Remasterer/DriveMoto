@@ -1,0 +1,24 @@
+<section class="products-slider">
+  <h3 class="products-slider__title">
+    {{sliderHeading}}
+  </h3>
+  <div class="products-slider__content">
+    <div>
+      <tabset>
+        <tab id="tab1" heading="{{category.name}}" *ngFor="let category of productCategories" class="products-slider__tab">
+            <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let product of (productsSelection  | productsByProductCategories :category)">
+              <app-product  [productInfo]="product"></app-product>
+            </ng-template>
+          </owl-carousel-o>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+  <div class="products-slider__action">
+<!--    <button class="products-slider__paginate-button">-->
+<!--      Показать еще-->
+<!--    </button>-->
+  </div>
+</section>
+

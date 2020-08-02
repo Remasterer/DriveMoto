@@ -1,0 +1,77 @@
+@import "src/assets/sass/main";
+.sale-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  text-align: center;
+  min-width: 265px;
+  line-height: 21px;
+  @extend %border-gray;
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__propostion{
+    @extend %action-block;
+    position: relative;
+  }
+  &__price{
+    &-new{
+      position: relative;
+      color: $bg-blue;
+      font-size: 27px;
+      padding-right: 27px;
+      @extend %barlow-bold;
+      &::after{
+        @include pseudo;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background: url("src/assets/img/icons/rubl-blue.svg") center center no-repeat;
+      }
+    }
+    &-old{
+      margin-top: 7px;
+      position: relative;
+      color: $light-gray;
+      font-size: 14px;
+      text-align: right;
+      padding-right: 18px;
+      @extend %barlow-regular;
+      &::before{
+        @extend %discount;
+      }
+      &::after{
+        @include pseudo;
+        top: 0px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background: url("src/assets/img/icons/rubl-gray.svg") center center no-repeat;
+      }
+    }
+  }
+  &__name{
+    @extend  %sf-bold;
+    font-size: 18px;
+    max-width: 200px;
+  }
+  &__bottom{
+    width: 100%;
+    background: $light-gray;
+    padding: 26px 0;
+    font-size: 18px;
+  }
+  &__info{
+    @extend  %sf-reg;
+    font-size: 18px;
+  }
+  &__time{
+    @extend %barlow-bold;
+    color: $bg-blue;
+  }
+}

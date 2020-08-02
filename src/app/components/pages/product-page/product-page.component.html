@@ -1,0 +1,77 @@
+<div class="container">
+  <app-breadcumps></app-breadcumps>
+  <div class="product__content">
+    <div class="product__left">
+      <div class="product__action" *ngIf="currentProduct.inSale">SALE</div>
+      <img src="{{currentProduct.photo}}" alt="">
+      <div class="product__old-price">
+        <span class="product__old-price__text">
+          {{currentProduct.price - 139 + '₽'}}
+        </span>
+      </div>
+      <p class="product__new-price">{{currentProduct.price}}</p>
+      <p class="product__proposition-text">Нашли дешевле? Снизим цену!</p>
+    </div>
+    <div class="product__info">
+      <h2 class="product__title">
+        {{currentProduct.name}}
+      </h2>
+      <p class="product__id">
+        Код товара:  {{currentProduct.id}}
+      </p>
+      <div class="product__actions">
+        <button class="product__actions__item">
+          <img src="assets/img/icons/like.svg" alt="">
+        </button>
+        <img src="assets/img/icons/rate.svg" alt="" class="product__show-rate product__actions__item">
+        <div class="prodyct__rating product__actions__item">
+          <rating [(ngModel)]="currentProduct.rates" [max]="max" [readonly]="true">
+          </rating>
+        </div>
+      </div>
+      <tabset>
+        <tab heading="Характеристики" id="tab1" class="product__characteristics characteristics">
+          <ul class="characteristics__list">
+            <li class="characteristics__item">
+              <p class="characteristics__item-object">
+                Производитель
+              </p>
+              <p class="characteristics__item-definition">
+                Канада
+              </p>
+            </li>
+            <li class="characteristics__item">
+              <p class="characteristics__item-object">
+                Производитель
+              </p>
+              <p class="characteristics__item-definition">
+                Канада
+              </p>
+            </li>
+            <li class="characteristics__item">
+              <p class="characteristics__item-object">
+                Производитель
+              </p>
+              <p class="characteristics__item-definition">
+                Канада
+              </p>
+            </li>
+            <li class="characteristics__item">
+              <p class="characteristics__item-object">
+                Производитель
+              </p>
+              <p class="characteristics__item-definition">
+                Канада
+              </p>
+            </li>
+          </ul>
+          <button class="product__buy-button btn-blue">купить</button>
+        </tab>
+        <tab heading="Наличие в магазине">
+
+        </tab>
+      </tabset>
+    </div>
+  </div>
+<!--  <app-products-slider [productsSelection]=""></app-products-slider>-->
+</div>

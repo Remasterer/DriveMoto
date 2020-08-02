@@ -1,0 +1,107 @@
+%border-gray{
+  border: 1px solid $light-gray;
+}
+%action-block{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: fit-content;
+  padding: 8px 20px;
+  background: $bg-blue;
+  color: $txt-white;
+  text-transform: uppercase;
+  @extend %proxima;
+}
+%discount{
+  @include pseudo;
+  top: 10px;
+  right: 20px;
+  background:$light-gray;
+  width: 40%;
+  height: 1px;
+  transform: rotate(-10deg);
+}
+%hoverShadows{
+  border: none;
+  box-shadow: 0px 0px 15px -4px rgba(0,0,0,0.75);
+}
+img{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+button{
+  cursor: pointer;
+}
+.btn-blue{
+  color: $txt-white;
+  text-transform: uppercase;
+  @extend %sf-bold;
+  background: $bg-blue;
+}
+.products-slider .owl-prev ,.products-slider .owl-next{
+  @include pseudo;
+  background: none !important;
+  top: 40%;
+}
+.products-slider .owl-prev{
+  left: -4%;
+  width: 40px;
+  height: 40px;
+  background: url("src/assets/img/icons/arr-left.svg") center center no-repeat !important;
+}
+.products-slider .owl-next{
+  right: -2%;
+  width: 40px;
+  height: 40px;
+  background: url("src/assets/img/icons/arr-right.svg") center center no-repeat !important;
+}
+  .nav-tabs .nav-link{
+    background: none;
+    border: none;
+  }
+  .nav-item{
+    background: none;
+    border: none;
+    position: relative;
+      &::before{
+        @include pseudo;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        width: 0%;
+        height: 2px;
+        background: $bg-blue;
+        transition: all .3s ease-in-out;
+      }
+    &.active{
+      &::before{
+        width: 100%;
+        left: 0;
+        right: auto;
+      }
+    }
+  }
+  .nav-tabs{
+    border-bottom: unset;
+  }
+  .tab-content{
+    margin-top: 25px ;
+  }
+.catalog__filter{
+  .nav-tabs{
+    color:$light-gray;
+    .nav-item{
+      &.active{
+        @extend %sf-bold;
+      }
+    }
+  }
+}
+product__actions__item span{
+  outline: none;
+}
+.bs-rating-star{
+  outline: none;
+  font-size: 23px ;
+}
