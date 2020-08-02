@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "@ngu/carousel": "^3.0.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "lodash.isequal": "^4.5.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-simple-slider": "^1.2.0",
