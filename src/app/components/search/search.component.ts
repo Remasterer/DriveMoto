@@ -9,7 +9,6 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
   activateLink(){
-    console.log('1312')
   }
   ngOnInit(): void {
   }

@@ -14,7 +14,6 @@ export class CategoriesComponent implements OnInit {
   constructor(private db: AngularFireDatabase) {
     // @ts-ignore
     this.categories = db.list('/categories-main').valueChanges();
-    console.log(this.categories)
   }
   ngOnInit(): void {
   }

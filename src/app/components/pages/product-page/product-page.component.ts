@@ -18,15 +18,13 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentProduct();
     this.getRelatedProducts();
-    console.log(this.currentProduct)
   }
   getRelatedProducts(){
     this.productsService.getRelatedProducts(this.currentProduct)
       .subscribe(products=>this.relactedProducts = products);
   }
   getCurrentProduct(){
-    this.productsService.getCurrentProduct(this.productId)
-      .subscribe(product => this.currentProduct = product);
+     return this.productsService.getCurrentProduct(this.productId);
   }
   max: number = 5;
   rate: number = 2;

@@ -4,6 +4,9 @@ import {IProductCategory} from "../../shared/interfaces/product-category.interfa
 import {IProduct} from "../../shared/interfaces/product.interface";
 import {NguCarouselStore} from "@ngu/carousel";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {BehaviorSubject, combineLatest} from "rxjs";
+import {switchMap} from "rxjs/operators";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-products-slider',
@@ -11,10 +14,26 @@ import {OwlOptions} from "ngx-owl-carousel-o";
   styleUrls: ['./products-slider.component.scss']
 })
 export class ProductsSliderComponent implements OnInit {
-  @Input() productsSelection:IProduct[];
+  @Input() productsSelection;
   @Input() sliderHeading: string;
-  constructor(private categoryService: CategoriesService) { }
   productCategories: IProductCategory[];
+  categoryIdFilter: BehaviorSubject<number|null>;
+
+  constructor(private categoryService: CategoriesService , afs: AngularFirestore) {
+    this.categoryIdFilter = new BehaviorSubject(null);
+    this.productsSelection = combineLatest(
+      this.categoryIdFilter,
+    ).pipe(
+      switchMap(([categoryId]) =>
+        afs.collection('products', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (categoryId) { query = query.where('categoryId', '==', categoryId) };
+          return query;
+        }).valueChanges()
+      )
+    );
+    this.categoryIdFilter.next(1);
+  }
   ngOnInit(): void {
     this.getProductCategories();
   }

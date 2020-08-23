@@ -21,6 +21,7 @@
     font-size: 23px;
     line-height: 28px;
     @extend %barlow-bold;
+    transition: all .3s;
   }
   &__button{
     color: $light-gray;
@@ -30,20 +31,21 @@
     &::after{
       @include pseudo;
       top: 0;
-      right: 0;
+      right: -20px;
       width: 20px;
       height: 20px;
-      background: url("/assets/icons/more-arrow.png") center center no-repeat;
+      background: url("src/assets/img/icons/more-arrow.png") center center no-repeat;
     }
   }
   &:hover{
     @extend  %hoverShadows;
 
-    &__name{
+    .categorie-item__name{
       color: $bg-blue;
     }
   }
   &__img{
+    max-width: 150px;
     object-fit: contain;
   }
 }

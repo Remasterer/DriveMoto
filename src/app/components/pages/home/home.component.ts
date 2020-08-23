@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "../../../shared/services/products.service";
 import {IProduct} from "../../../shared/interfaces/product.interface";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-home',
@@ -8,23 +9,22 @@ import {IProduct} from "../../../shared/interfaces/product.interface";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  popularProducts: IProduct[];
-  saledProducts:IProduct[];
-  constructor(private productsService:ProductsService) { }
+  productsCollection = this.db.collection('products').valueChanges();
+  popularProducts;
+  saledProducts;
+  constructor(private productsService:ProductsService,private db: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getPopularProducts();
     this.getSaledProducts();
-    console.log(this.saledProducts)
+
   }
   getPopularProducts(){
-    this.productsService.getPopularProducts()
-      .subscribe(product=>this.popularProducts = product);
+    this.popularProducts = this.productsService.getPopularProducts();
   }
   getSaledProducts(){
-    this.productsService.getSaledProducts()
-      .subscribe(product=>this.saledProducts = product);
+    this.saledProducts = this.productsService.getSaledProducts();
+
   }
 
 }

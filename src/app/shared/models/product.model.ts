@@ -13,3 +13,11 @@ export class Product implements  IProduct{
               public rates:number) {//y
   }
 }
+interface IShirt {
+  name: string,
+  price: number,
+}
+export class Shirt implements  IShirt{
+  constructor( public name:string ,public price:number,) {
+  }
+}

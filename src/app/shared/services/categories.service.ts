@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ICategory} from "../interfaces/category.interface";
 import {Observable, of} from "rxjs";
 import {IProductCategory} from "../interfaces/product-category.interface";
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -9,37 +10,15 @@ import {IProductCategory} from "../interfaces/product-category.interface";
 export class CategoriesService {
   categories: ICategory[] ;
 
-  productCategories: IProductCategory[] = [
-    {
-      hash: 1,
-      name: 'запчасти',
-    },
-    {
-      hash: 2,
-      name: 'моторы',
-    },
-    {
-      hash: 3,
-      name: 'шины ',
-    },
-    {
-      hash: 4,
-      name: 'электроника',
-    },
-    {
-      hash: 5,
-      name: 'инструменты',
-    },
-    {
-      hash: 6,
-      name: 'аксессуары',
-    }
-  ];
+  productCategories: Observable<any[]>;
+
   getCategories(): Observable<ICategory[]>{
     return of(this.categories);
   }
-  getProductCategories(): Observable<IProductCategory[]>{
-    return of(this.productCategories);
+  getProductCategories(): Observable<any[]>{
+    return this.productCategories;
   }
-  constructor() { }
+  constructor(db: AngularFireDatabase) {
+    this.productCategories = db.list('categories-main').valueChanges();
+  }
 }

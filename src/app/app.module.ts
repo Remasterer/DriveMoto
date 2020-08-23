@@ -35,6 +35,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     ShopComponent,
     ProductPageComponent,
     BreadcumpsComponent,
+    AdminProductsComponent,
   ],
   imports: [
     BrowserModule,

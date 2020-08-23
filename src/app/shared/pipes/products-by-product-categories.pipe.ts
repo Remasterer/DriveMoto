@@ -7,7 +7,7 @@ import {ProductCategory} from "../models/product-category.model";
 })
 export class ProductsByProductCategoriesPipe implements PipeTransform {
 
-  transform(products: IProduct[],category: ProductCategory, ...args: unknown[]): IProduct[]{
+  transform(products: IProduct[],category: ProductCategory, ...args: unknown[]){
     return products.filter(product=>product.categoryId==category.hash);
   }
 
