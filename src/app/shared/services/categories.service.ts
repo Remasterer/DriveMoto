@@ -13,12 +13,12 @@ export class CategoriesService {
   productCategories: Observable<any[]>;
 
   getCategories(): Observable<ICategory[]>{
-    return of(this.categories);
+    return this.productCategories;
   }
   getProductCategories(): Observable<any[]>{
     return this.productCategories;
   }
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
     this.productCategories = db.list('categories-main').valueChanges();
   }
 }

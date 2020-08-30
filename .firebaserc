@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "drivemoto-a650b": {
+      "hosting": {
+        "DriveMoto": [
+          "drivemoto-a650b"
+        ]
+      }
+    }
+  }
+}

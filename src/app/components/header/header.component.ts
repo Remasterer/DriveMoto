@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {IProduct} from "../../shared/interfaces/product.interface";
 import {ICategory} from "../../shared/interfaces/category.interface";
 import {AngularFireDatabase} from "@angular/fire/database";
+import {CategoriesService} from "../../shared/services/categories.service";
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,8 @@ import {AngularFireDatabase} from "@angular/fire/database";
 })
 export class HeaderComponent implements OnInit {
   links: Observable<ICategory[]>;
-  constructor(private db: AngularFireDatabase) {
-    // @ts-ignore
-    this.links = db.list('/categories-main').valueChanges();
+  constructor(private categoryService: CategoriesService ) {
+    this.links = categoryService.getCategories();
   }
   ngOnInit(): void {
   }

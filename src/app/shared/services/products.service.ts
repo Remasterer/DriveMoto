@@ -24,16 +24,16 @@ export class ProductsService {
   comparePopularity(a:IProduct,b:IProduct){
     return a.buys - b.buys;
   }
-
+  getProductsByCategoryId(categoryId:number):Observable<any>{
+    return this.db.collection('products',ref => ref.where('categoryId', '==', categoryId)).valueChanges();
+  }
   getPopularProducts():Observable<IProduct[]>{
     return this.popularProducts;
   }
   getRelatedProducts(currentProduct:IProduct):Observable<IProduct[]>{
-    // return of(this.allProducts.filter(product=>currentProduct.relatedProductsIds.includes(product.id)));
     return this.allProducts;
   }
   getCurrentProduct(index:number){
-    // return of(this.allProducts.find(product=>product.id==index))
     return  this.db.collection('products',ref => ref.where('id', '==', index));
   }
   getSaledProducts():Observable<any[]> {

@@ -5,15 +5,17 @@
   <div class="products-slider__content">
     <div>
       <tabset>
-        <tab id="tab1" heading="{{category.name}}" *ngFor="let category of productCategories" class="products-slider__tab">
-            <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide *ngFor="let product of (productsSelection | async  )">
-              <app-product  [productInfo]="product"></app-product>
-            </ng-template>
+        <tab id="tab1" heading="{{category.name}}" *ngFor="let category of productCategories | async" class="products-slider__tab">
+            <owl-carousel-o [options]="customOptions"  >
+              <ng-template carouselSlide *ngFor="let product of getProductsByCategory(category.id) | async">
+                  <app-product  [productInfo]="product"></app-product>
+              </ng-template>
           </owl-carousel-o>
         </tab>
       </tabset>
     </div>
   </div>
 </section>
-
+<p *ngFor="let p of productsFilteredByCategory | async">
+    {{p | json}}
+</p>

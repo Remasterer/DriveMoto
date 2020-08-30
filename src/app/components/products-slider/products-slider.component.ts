@@ -1,45 +1,39 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoriesService} from "../../shared/services/categories.service";
 import {IProductCategory} from "../../shared/interfaces/product-category.interface";
 import {IProduct} from "../../shared/interfaces/product.interface";
 import {NguCarouselStore} from "@ngu/carousel";
 import {OwlOptions} from "ngx-owl-carousel-o";
-import {BehaviorSubject, combineLatest} from "rxjs";
+import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {switchMap} from "rxjs/operators";
-import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
+import {ProductsService} from "../../shared/services/products.service";
 
 @Component({
   selector: 'app-products-slider',
   templateUrl: './products-slider.component.html',
   styleUrls: ['./products-slider.component.scss']
 })
+
 export class ProductsSliderComponent implements OnInit {
+  @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
   @Input() productsSelection;
   @Input() sliderHeading: string;
-  productCategories: IProductCategory[];
-  categoryIdFilter: BehaviorSubject<number|null>;
+  productCategories: Observable<any[]>;
+  productsFilteredByCategory: Observable<any[]>;
+  constructor(private categoryService: CategoriesService , private productsService: ProductsService) {
 
-  constructor(private categoryService: CategoriesService , afs: AngularFirestore) {
-    this.categoryIdFilter = new BehaviorSubject(null);
-    this.productsSelection = combineLatest(
-      this.categoryIdFilter,
-    ).pipe(
-      switchMap(([categoryId]) =>
-        afs.collection('products', ref => {
-          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          if (categoryId) { query = query.where('categoryId', '==', categoryId) };
-          return query;
-        }).valueChanges()
-      )
-    );
-    this.categoryIdFilter.next(1);
   }
   ngOnInit(): void {
     this.getProductCategories();
+    this.productsFilteredByCategory = this.productsService.getProductsByCategoryId(2)
+    this.onCreate.emit('dummy');
   }
   getProductCategories(): void {
-    this.categoryService.getProductCategories()
-      .subscribe(categories=> this.productCategories = categories);
+    this.productCategories = this.categoryService.getCategories();
+  }
+  getProductsByCategory(categoryId){
+    return this.productsService.getProductsByCategoryId(categoryId);
   }
   customOptions: OwlOptions = {
     loop: true,
@@ -65,5 +59,7 @@ export class ProductsSliderComponent implements OnInit {
     },
     nav: true
   }
-
+  yourMethod(item){
+    console.log(item);
+  }
 }

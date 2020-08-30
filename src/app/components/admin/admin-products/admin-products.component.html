@@ -1,0 +1,58 @@
+<div class="container">
+  <form action="#" class="form">
+    <div class="form-group"><label>Here put id of product</label>
+      <input type="number" class="form-control"  [(ngModel)]="id" name="id">
+    </div>
+    <div class="form-group">
+      <label>Here put name of product</label>
+      <input type="text" class="form-control" [(ngModel)]="name" name="name">
+    </div>
+    <div class="form-group">
+      <label>Here put sale mark of product  </label>
+      <div class="form-check">
+        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." [(ngModel)]="inSale" name="inSale">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Here put price of product</label>
+      <input type="number" class="form-control" [(ngModel)]="price" name="price">
+    </div>
+    <div class="form-group">
+      <label>Here put avaliability of product</label>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input position-static" [(ngModel)]="avaliable" name="avaliable">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Here put  category Id of product</label>
+      <input type="number" class="form-control" [(ngModel)]="categoryId" name="categoryId">
+    </div>
+    <div class="form-group">
+      <label>Here put  buys of product</label>
+      <input type="number" class="form-control" [(ngModel)]="buys" name="buys">
+    </div>
+    <div class="form-group">
+      <label>Here put rate of product</label>
+      <input type="number" class="form-control" [(ngModel)]="rates" name="rates">
+    </div>
+    <div class="form-group">
+      <label>Here put related products ids of product</label>
+      <input type="string" class="form-control" [(ngModel)]="relatedProductsIds" name="relatedProductsIds">
+    </div>
+    <div class="form-group">
+      <label>Here put photo of product</label>
+      <input type="text" class="form-control" [(ngModel)]="photo" name="photo">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addProduct()">Submit</button>
+  </form>
+</div>
+
+<div style="text-align:center;display:unset;">
+  List of Products:
+  <ul class="text-center" style="max-width: 220px; overflow: hidden">
+    <li *ngFor="let product of productsLists | async">
+      {{ product | json}}
+    </li>
+  </ul>
+</div>
+
