@@ -3,19 +3,45 @@
     {{sliderHeading}}
   </h3>
   <div class="products-slider__content">
-    <div>
-      <tabset>
-        <tab id="tab1" heading="{{category.name}}" *ngFor="let category of productCategories | async" class="products-slider__tab">
-            <owl-carousel-o [options]="customOptions"  >
-              <ng-template carouselSlide *ngFor="let product of getProductsByCategory(category.id) | async">
-                  <app-product  [productInfo]="product"></app-product>
-              </ng-template>
-          </owl-carousel-o>
-        </tab>
-      </tabset>
-    </div>
+<!--      <tabset >-->
+<!--        <tab heading="{{category.name}}"  >-->
+<!--          <owl-carousel-o [options]="customOptions"  >-->
+<!--             <ng-template carouselSlide *ngFor="let product of productsFilteredByCategory | async">-->
+<!--                  <app-product  [productInfo]="product"></app-product>-->
+<!--              </ng-template>-->
+<!--          </owl-carousel-o>-->
+
+<!--        </tab>-->
+<!--      </tabset>-->
+<!--    <mat-tab-group  #tabRef  [selectedIndex]="selected.value"-->
+<!--                    (selectedIndexChange)="selected.setValue($event)">-->
+<!--      <mat-tab  label="{{category.name}}" *ngFor="let category of productCategories | async;let i = index" class="products-slider__tab" >-->
+<!--        <owl-carousel-o [options]="customOptions"  >-->
+<!--          <ng-template carouselSlide *ngFor="let product of productsFilteredByCategory | async">-->
+<!--            <app-product  [productInfo]="product"></app-product>-->
+<!--          </ng-template>-->
+<!--        </owl-carousel-o>-->
+<!--      </mat-tab>-->
+<!--    </mat-tab-group>-->
+
+
+
+
+
+
+    <mat-tab-group [selectedIndex]="selected.value"  (selectedIndexChange)="changeFilteredProducts($event)">
+      <mat-tab *ngFor="let category of productCategories | async;let i = index" [label]="category.name">
+        <owl-carousel-o [options]="customOptions"  >
+          <ng-template carouselSlide *ngFor="let product of productsFilteredByCategory | async">
+            <app-product  [productInfo]="product"></app-product>
+          </ng-template>
+        </owl-carousel-o>
+      </mat-tab>
+    </mat-tab-group>
+
+
+
   </div>
+
 </section>
-<p *ngFor="let p of productsFilteredByCategory | async">
-    {{p | json}}
-</p>
+

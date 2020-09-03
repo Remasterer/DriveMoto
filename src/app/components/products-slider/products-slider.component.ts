@@ -8,6 +8,7 @@ import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {switchMap} from "rxjs/operators";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {ProductsService} from "../../shared/services/products.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-products-slider',
@@ -26,14 +27,16 @@ export class ProductsSliderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getProductCategories();
-    this.productsFilteredByCategory = this.productsService.getProductsByCategoryId(2)
-    this.onCreate.emit('dummy');
+    this.productsFilteredByCategory = this.productsService.getProductsByCategoryId(1);
   }
   getProductCategories(): void {
     this.productCategories = this.categoryService.getCategories();
   }
   getProductsByCategory(categoryId){
-    return this.productsService.getProductsByCategoryId(categoryId);
+    this.productsFilteredByCategory = this.productsService.getProductsByCategoryId(categoryId);
+  }
+  changeFilteredProducts($event){
+    this.getProductsByCategory($event)
   }
   customOptions: OwlOptions = {
     loop: true,
@@ -59,7 +62,6 @@ export class ProductsSliderComponent implements OnInit {
     },
     nav: true
   }
-  yourMethod(item){
-    console.log(item);
-  }
+  selected = new FormControl(0);
+
 }

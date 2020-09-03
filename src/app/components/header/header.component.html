@@ -1,5 +1,4 @@
 <header class="header">
-
   <div class="container">
     <div class="header__inner">
       <div class="header__top">
@@ -28,7 +27,7 @@
       <div class="header__bottom">
         <nav class="header__categories">
           <ul class="header__categories__list">
-            <li *ngFor="let link of links | async" class="header__categories__list-item"><a [routerLink] = "getLinkHref(link.translate)" [state]="{ categoryId: link.id }"  class="header__categories__list-link">{{link.name}}</a></li>
+            <li *ngFor="let link of links | async" class="header__categories__list-item"><a (click)="selectCategory(link)" [routerLink] = "getLinkHref(link.translate)" [state]="{ categoryId: link.id }"  class="header__categories__list-link">{{link.name}}</a></li>
           </ul>
         </nav>
       </div>

@@ -25,7 +25,9 @@ export class ProductsService {
     return a.buys - b.buys;
   }
   getProductsByCategoryId(categoryId:number):Observable<any>{
-    return this.db.collection('products',ref => ref.where('categoryId', '==', categoryId)).valueChanges();
+    if(this.db.collection('products')){
+      return this.db.collection('products',ref => ref.where('categoryId', '==', categoryId)).valueChanges();
+    }
   }
   getPopularProducts():Observable<IProduct[]>{
     return this.popularProducts;

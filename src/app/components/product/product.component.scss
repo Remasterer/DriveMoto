@@ -9,6 +9,7 @@
     @extend %border-gray;
     text-align: center;
     width: 270px;
+    position: relative;
   }
   &__sale{
 
@@ -91,12 +92,14 @@
   }
 
   &__hover-box{
+    white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     position: absolute;
     text-align: center;
     top: 35%;
-    left: 4.5%;
+    transform: translateX(-50%);
+    left: 50%;
     font-size: 24px;
     line-height: 24px;
     padding: 18px 21px ;
