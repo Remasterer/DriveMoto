@@ -3,7 +3,7 @@
     <div *ngIf="productInfo.inSale" class="product__sale">SALE</div>
     <button class="product__like" (click)="toggleFavorite($event)">
     </button>
-    <a routerLink="/product" class="product__inner" href="#">
+    <a routerLink="/product/{{productInfo.id}}" class="product__inner" href="#">
       <div class="product__image-wrapper">
         <img src="{{productInfo.photo}}" alt=""  class="product__image">
       </div>
@@ -16,16 +16,16 @@
       <ng-template #productInfoBlock >
         <div class="product__inform">
           <p class="product__inform-text">
-            нет в наличии
+            нема в наявності
           </p>
           <a href="#1" class="product__inform product__inform-button ">
-            Сообщить о поступлении
+            Заяви про поступ
           </a>
         </div>
       </ng-template>
       <a class="product__hover-box">
         <p>
-          посмотреть товар
+          подивитися товар
         </p>
       </a>
     </a>

@@ -2,7 +2,12 @@
 .intro{
   &__inner{
     display: grid;
-    grid-template-columns: 1fr minmax(295px,20%);
+    grid-template-columns: 65% 295px  ;
     grid-gap: 36px;
+    justify-content: space-between;
+    @include  mq('tablet-wide'){
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

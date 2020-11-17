@@ -1,4 +1,6 @@
 <div class="breadcrumbs">
-  <p class="breadcrumbs__item">Главная</p>
-  <p class="breadcrumbs__item">Гидроциклы</p>
+  <a class="breadcrumbs__item" routerLink="/home">Головна</a>
+  <a *ngFor="let link of links" class="breadcrumbs__item" routerLink="{{'/'+link.linkHref}}">
+    {{link.linkName}}
+  </a>
 </div>

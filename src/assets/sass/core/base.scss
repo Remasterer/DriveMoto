@@ -105,3 +105,55 @@ product__actions__item span{
   outline: none;
   font-size: 23px ;
 }
+.banner .owl-carousel{
+  max-width: 839px;
+}
+.banner .owl-nav{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.banner .owl-prev , .banner .owl-next {
+  background: unset !important;
+  position: absolute;
+  font-size: 40px;
+
+  &::after{
+    font-size: 30px;
+    content: '\221F';
+  }
+}
+.banner .owl-prev {
+  left: 0;
+  transform: rotate(47deg)
+}
+.banner .owl-next{
+  right: 0;
+  position: absolute;
+  transform: rotate(47deg) scale(-1);
+}
+.banner .owl-dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  .owl-dot {
+    width: 11px;
+    height: 11px;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    span{
+      display: none !important;
+    }
+  }
+
+  .owl-dot   +  .owl-dot {
+    margin-left: 9px;
+  }
+  .owl-dot.active {
+    background-color: $txt-white;
+  }
+}

@@ -74,4 +74,8 @@
     @extend %barlow-bold;
     color: $bg-blue;
   }
+  @include  mq('tablet-wide'){
+    max-width: 265px;
+    margin:  0 auto;
+  }
 }

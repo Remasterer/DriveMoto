@@ -10,9 +10,8 @@ import {AdminProductsComponent} from "./components/admin/admin-products/admin-pr
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'catalog', component: CatalogComponent},
   { path: 'catalog/:id', component: CatalogComponent},
-  {path: 'product',component: ProductPageComponent},
+  {path: 'product/:id',component: ProductPageComponent},
   {path: 'admin',component: AdminProductsComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

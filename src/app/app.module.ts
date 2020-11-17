@@ -36,6 +36,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
     ProductPageComponent,
     BreadcumpsComponent,
     AdminProductsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
     RatingModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [
   ],

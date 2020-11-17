@@ -1,22 +1,68 @@
 <header class="header">
-  <div class="container">
+  <div class="container" >
     <div class="header__inner">
       <div class="header__top">
-        <nav class="header__menu">
-          <ul class="header__list">
-            <li class="header__list-item"><a routerLink="catalog" routerLinkActive="active" class="header__list__item-link">Магазины</a></li>
-            <li class="header__list-item"><a routerLink="catalog/katera" routerLinkActive="active" class="header__list__item-link">Акции </a></li>
-            <li class="header__list-item"><a routerLink="catalog/gidrotsikly" class="header__list__item-link">Доставка и оплата</a></li>
+        <div class="header__mobile">
+          <button for="menuToggle" class="menu__btn" (click)="toggleMobileMenu()">
+            <span class="menu__line"></span>
+          </button>
+          <div class="mob-menu" [ngClass]="activeMobieMenu ? 'active' : ''">
+                <nav class="header__mobile__menu menu-mobile-header">
+                  <ul class="menu-mobile-header__list  ">
+<!--                    <ng-container *ngIf="this.currentScreenWidth < 1024">-->
+                    <li class="menu-mobile-header__item e--user">
+                      <a routerLink = "catalog/">Війти</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--user">
+                      <a routerLink = "catalog/">Регістрация</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--like">
+                      <a routerLink = "catalog/">Вибране</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--bin">
+                      <a routerLink = "catalog/">Корзина</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--shop">
+                      <a routerLink = "catalog/">Магазини</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--actions">
+                      <a routerLink = "catalog/">Акції</a>
+                    </li>
+                    <li class="menu-mobile-header__item e--delivery">
+                      <a routerLink = "catalog/">Доставка і оплата</a>
+                    </li>
+                      <li *ngFor="let link of links | async" class="menu-mobile-header__item">
+                        <a routerLink = "catalog/{{link.translate}}">{{link.name}}</a>
+                      </li>
+<!--                    </ng-container>-->
+                  </ul>
+                  <p class="menu-mobile-header__adress">
+                    Москва,
+                    ул. Науки  25
+                  </p>
+                </nav>
+          </div>
+        </div>
+        <nav class="header__top-menu top-menu">
+          <ul class="top-menu__list">
+            <li class="top-menu__list-item"><a routerLink="catalog" routerLinkActive="active" class="top-menu__list__item-link">Магазини</a></li>
+            <li class="top-menu__list-item"><a routerLink="catalog/katera" routerLinkActive="active" class="top-menu__list__item-link">Акції </a></li>
+            <li class="top-menu__list-item"><a routerLink="catalog/gidrotsikly" class="top-menu__list__item-link">Доставка і оплата</a></li>
           </ul>
         </nav>
-        <a routerLink="/">
-          <img src="assets/img/icons/logo.svg" alt="" class="header-logo">
+        <a routerLink="/" class="header__brand">
+          <picture>
+            <source srcset="assets/img/icons/mob-logo.svg" media="(max-width: 1024px)">
+            <img src="assets/img/icons/logo.svg" alt="main-logo" class="header-logo">
+          </picture>
         </a>
         <div class="header__info">
-          <img src="assets/img/icons/geo.svg" alt="">
-          <p class="header__adress">
-            Москва,  ул. Науки  25
-          </p>
+          <div class="header__adress">
+            <img src="assets/img/icons/geo.svg" alt="">
+            <p class="">
+              Львів , Степана бандери
+            </p>
+          </div>
           <ul class="header__info__list">
             <li class="header__info__list-item"><a href="#" class="header__info__list-link"><img src="assets/img/icons/like.svg" alt=""></a></li>
             <li class="header__info__list-item"><a href="#" class="header__info__list-link"><img src="assets/img/icons/user.svg" alt=""></a></li>
@@ -26,8 +72,17 @@
       </div>
       <div class="header__bottom">
         <nav class="header__categories">
-          <ul class="header__categories__list">
-            <li *ngFor="let link of links | async" class="header__categories__list-item"><a (click)="selectCategory(link)" [routerLink] = "getLinkHref(link.translate)" [state]="{ categoryId: link.id }"  class="header__categories__list-link">{{link.name}}</a></li>
+          <ul class="header__categories__list" >
+            <ng-container >
+              <li *ngFor="let link of links | async" class="header__categories__list-item">
+                <a routerLink = "catalog/{{link.translate}}"   class="header__categories__list-link">{{link.name}}</a>
+              </li>
+            </ng-container>
+            <ng-template #mobileHeaderBottom>
+              <li class="header__categories__list-item"><a routerLink="catalog" routerLinkActive="active" class="header__list__item-link">Магазини</a></li>
+              <li class="header__categories__list-item"><a routerLink="catalog/katera" routerLinkActive="active" class="header__list__item-link">Акції </a></li>
+              <li class="header__categories__list-item"><a routerLink="catalog/gidrotsikly" class="header__list__item-link">Доставка і оплата</a></li>
+            </ng-template>
           </ul>
         </nav>
       </div>

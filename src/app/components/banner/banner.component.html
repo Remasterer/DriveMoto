@@ -1,21 +1,5 @@
-
-
 <section class="banner">
-  <div
-    simpleSlider
-    currentSlide="customIdForCurrentSlide"
-    prev="bannerPrevBtn"
-    next="bannerNextBtn"
-    [transitionTime]="300"
-    [automatic]="true"
-  >
-    <img *ngFor="let banner of banners" src="assets/img/banner.jpg" alt="" class="banner-image" >
-  </div>
-
-  <button class="banner__prev" id="bannerPrevBtn"></button>
-  <button class="banner__next" id="bannerNextBtn"></button>
-
-  <div class="banner__pagination" id="paginate">
-    <button *ngFor="let banner of banners;index as b"   [attr.data-slide]="b+1"  role="button" [attr.aria-label]="'Go to slide ' + (b+1)"   a class="banner__pagination-item"></button>
-  </div>
+  <owl-carousel-o [options]="customOptions"  >
+    <ng-template carouselSlide *ngFor="let banner of banners"><img  src="assets/img/banner.jpg" alt="" class="banner-image" ></ng-template>
+  </owl-carousel-o>
 </section>

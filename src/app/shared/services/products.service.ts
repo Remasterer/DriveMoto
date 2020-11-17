@@ -36,7 +36,7 @@ export class ProductsService {
     return this.allProducts;
   }
   getCurrentProduct(index:number){
-    return  this.db.collection('products',ref => ref.where('id', '==', index));
+    return  this.db.collection('products',ref => ref.where('id', '==', index)).valueChanges();
   }
   getSaledProducts():Observable<any[]> {
     this.productsInSale = this.db.collection('products', ref => ref.where('inSale','==', true )).valueChanges()

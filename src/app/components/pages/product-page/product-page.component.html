@@ -1,23 +1,28 @@
 <div class="container">
-  <app-breadcumps></app-breadcumps>
+  <app-breadcumps *ngIf="breadcumpsLinks else loadingBreadcumps" [links]="breadcumpsLinks"></app-breadcumps>
+  <ng-template #loadingBreadcumps>
+    Looading bradcrumps...
+  </ng-template>
   <div class="product__content">
     <div class="product__left">
+
       <div class="product__action" *ngIf="currentProduct.inSale">SALE</div>
       <img src="{{currentProduct.photo}}" alt="">
       <div class="product__old-price">
         <span class="product__old-price__text">
           {{currentProduct.price - 139 + '₽'}}
         </span>
-      </div>
       <p class="product__new-price">{{currentProduct.price}}</p>
-      <p class="product__proposition-text">Нашли дешевле? Снизим цену!</p>
+      <p class="product__proposition-text">Нашли дешевше? Зробимо знижку!</p>
+      </div>
     </div>
+
     <div class="product__info">
       <h2 class="product__title">
         {{currentProduct.name}}
       </h2>
       <p class="product__id">
-        Код товара:  {{currentProduct.id}}
+        Код товару:  {{currentProduct.id}}
       </p>
       <div class="product__actions">
         <button class="product__actions__item">
@@ -34,7 +39,7 @@
           <ul class="characteristics__list">
             <li class="characteristics__item">
               <p class="characteristics__item-object">
-                Производитель
+                Виробник
               </p>
               <p class="characteristics__item-definition">
                 Канада
@@ -42,32 +47,32 @@
             </li>
             <li class="characteristics__item">
               <p class="characteristics__item-object">
-                Производитель
+                Рік виготовлення
               </p>
               <p class="characteristics__item-definition">
-                Канада
+                1999
               </p>
             </li>
             <li class="characteristics__item">
               <p class="characteristics__item-object">
-                Производитель
+                КПП
               </p>
               <p class="characteristics__item-definition">
-                Канада
+                Автомат
               </p>
             </li>
             <li class="characteristics__item">
               <p class="characteristics__item-object">
-                Производитель
+                Двигун
               </p>
               <p class="characteristics__item-definition">
-                Канада
+               0.7
               </p>
             </li>
           </ul>
-          <button class="product__buy-button btn-blue">купить</button>
+          <button class="product__buy-button btn-blue">купити</button>
         </tab>
-        <tab heading="Наличие в магазине">
+        <tab heading="Наявність в магазині">
 
         </tab>
       </tabset>

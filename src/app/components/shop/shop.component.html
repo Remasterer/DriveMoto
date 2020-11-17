@@ -1,6 +1,6 @@
 <div class="shop">
   <div *ngFor="let product of products | async">
-    <app-product *ngIf="cattegoryId == product.categoryId" [productInfo]="product"></app-product>
+    <app-product  [productInfo]="product" ></app-product>
   </div>
 </div>
 

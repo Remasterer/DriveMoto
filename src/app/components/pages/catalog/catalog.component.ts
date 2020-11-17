@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {IProduct} from "../../../shared/interfaces/product.interface";
-import {Product} from "../../../shared/models/product.model";
+import {ActivatedRoute} from "@angular/router";
+import {CategoriesService} from "../../../shared/services/categories.service";
+import {ICategory} from "../../../shared/interfaces/category.interface";
 import { Location } from '@angular/common';
-
+import {Observable} from "rxjs";
+import {IProduct} from "../../../shared/interfaces/product.interface";
+import {ProductsService} from "../../../shared/services/products.service";
+import {IBreadcumb} from "../../../shared/interfaces/breadcumbs.interface";
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
@@ -10,12 +14,32 @@ import { Location } from '@angular/common';
 })
 export class CatalogComponent implements OnInit {
   currentCategoryId:number;
-  constructor(private location:Location) { }
-
+  breadcumpsLinks: IBreadcumb[];
+  selectedCategory;
+  productsOfCategory:Observable<IProduct>;
+  constructor(private categoryService: CategoriesService,private productsService: ProductsService,
+            private route: ActivatedRoute,private location: Location) {
+  }
   ngOnInit(): void {
-    // @ts-ignore
-    this.currentCategoryId  =  this.location.getState().categoryId;
-    console.log(this.location)
+    this.route.params.forEach((params) => {
+      let id = params['id'];
+      this.categoryService.getCategoryByName(id).subscribe(
+        response => {
+          this.selectedCategory = response[0];
+          this.getProductsById(this.selectedCategory.id);
+          this.breadcumpsLinks = [];
+          this.breadcumpsLinks.push({
+            linkName:this.selectedCategory.name,
+            linkHref:'catalog/' + this.selectedCategory.translate,
+          })
+        }
+      );
+    });
+
+  }
+
+  getProductsById(categoryId){
+    this.productsOfCategory = this.productsService.getProductsByCategoryId(categoryId);
   }
 
 }

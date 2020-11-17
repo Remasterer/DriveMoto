@@ -1,27 +1,35 @@
 <div class="container">
-  <app-breadcumps>
-  </app-breadcumps>
+  <app-breadcumps *ngIf="selectedCategory else loading" [links]="breadcumpsLinks"></app-breadcumps>
+  <ng-template #loading>
+    <div>Loading breadcums...</div>
+  </ng-template>
+
+
+  <ng-template #loading>
+    <div>Loading breadcums...</div>
+  </ng-template>
+
   <div class="catalog__main">
-    <h1 class="catalog__heading">Гидроциклы</h1>
+    <h1 class="catalog__heading">{{selectedCategory ? selectedCategory.name : 'Loading'}}</h1>
     <div class="catalog__header">
     <div class="catalog__filter-breadcrumb breadcrumbs-filter">
       <div class="breadcrumbs-filter__item">
-        Полноприводные
+        Повнопривідні
       </div>
       <div class="breadcrumbs-filter__item">
-        от 5000
+        від 5000
       </div>
       <div class="breadcrumbs-filter__item">
         BRP
       </div>
       <div class="breadcrumbs-filter__item">
-        еще
+        ще
       </div>
     </div>
       <div class="catalog__sort">
         <select name="" id="" class="catalog__sort-select">
-          <option value="rate" [defaultSelected]="true">По полулярности</option>
-          <option value="price">По цене</option>
+          <option value="rate" [defaultSelected]="true">По полулярності</option>
+          <option value="price">По цені</option>
         </select>
         <button class="catalog__sort-button">
           <svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +56,10 @@
     </div>
     <div class="catalog__content">
       <app-filter></app-filter>
-      <app-shop [cattegoryId]="currentCategoryId"></app-shop>
+      <app-shop *ngIf="selectedCategory  else loadingProducts" [products]="productsOfCategory"></app-shop>
+      <ng-template #loadingProducts>
+        <div>Загрузка товарів</div>
+      </ng-template>
     </div>
   </div>
 </div>

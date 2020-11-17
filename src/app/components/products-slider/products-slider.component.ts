@@ -18,7 +18,6 @@ import {FormControl} from "@angular/forms";
 
 export class ProductsSliderComponent implements OnInit {
   @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
-  @Input() productsSelection;
   @Input() sliderHeading: string;
   productCategories: Observable<any[]>;
   productsFilteredByCategory: Observable<any[]>;
